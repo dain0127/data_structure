@@ -1,4 +1,7 @@
 #include "red_black_tree.h"
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
 
 // 생성자
 RedBlackTree::RedBlackTree() {
@@ -20,6 +23,27 @@ void RedBlackTree::insert(int value) {
     // 1. 일반 BST 삽입
     // 2. 새 노드를 빨간색으로 설정
     // 3. insertFixup 호출하여 속성 복원
+    
+    RBNode* new_node = new RBNode(value);
+
+    RBNode* parent_node = nullptr;
+    RBNode* curr_node = root;
+    
+    //curr_node가 null이면 stop
+    while(curr_node){
+        parent_node = curr_node;
+        if(curr_node->data > value)
+            curr_node=curr_node->left;
+        else if(curr_node->data < value)
+            curr_node=curr_node->right;
+        else{
+            cout<<"already existed data is inserted"<<endl;
+            break;
+        }
+    }
+    
+
+
 }
 
 // 삭제 연산
@@ -115,6 +139,13 @@ void testRedBlackTree() {
 }
 
 int main() {
-    testRedBlackTree();
+    //메모리 누수 판단
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+    //testRedBlackTree();
+    cout<<"hello"<<endl;
+    int* arr = new int[4];
+
+    _CrtDumpMemoryLeaks();
     return 0;
 } 

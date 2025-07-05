@@ -15,7 +15,8 @@ struct RBNode {
     RBNode* right;
     RBNode* parent;
     
-    RBNode(int val) : data(val), color(RED), left(nullptr), right(nullptr), parent(nullptr) {}
+    RBNode(int val) : data(val), color(RED),
+    left(nullptr), right(nullptr), parent(nullptr) {}
 };
 
 class RedBlackTree {
@@ -45,11 +46,7 @@ public:
     void insert(int value);  // 삽입
     void remove(int value);  // 삭제
     void print();           // 중위 순회로 출력
-    
-private:
-    // 재귀적 헬퍼 함수들
-    void inorderHelper(RBNode* node);
-    void destroyTree(RBNode* node);
+
 };
 
 #endif // RED_BLACK_TREE_H 
